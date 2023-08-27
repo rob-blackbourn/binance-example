@@ -23,6 +23,6 @@ GraphQLKLine = GraphQLObjectType(
         "quoteAssetVolume": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
         "tradeCount": GraphQLField(GraphQLNonNull(GraphQLInt)),
         "takerBuyBaseAssetVolume": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
-        "takerBuyBaseAssetVolume": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "takerBuyQuoteAssetVolume": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
     }
 )
