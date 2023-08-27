@@ -16,7 +16,7 @@ def from_datetime(value: datetime) -> int:
 
 
 def to_stream_url(symbols: Sequence[str], variable: str) -> str:
-    streams = [f'{symbol}@{variable}' for symbol in symbols]
+    streams = [f'{symbol.lower()}@{variable}' for symbol in symbols]
     query_string = f"streams={'/'.join(streams)}"
     url = f"{BINANCE_WS_URL}/stream?{query_string}"
     return url
