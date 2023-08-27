@@ -18,7 +18,11 @@ from graphql import GraphQLResolveInfo
 import httpx
 import websockets
 
-from .common import BINANCE_WS_URL, BINANCE_HTtP_URL, to_datetime
+from .common import (
+    BINANCE_HTtP_URL,
+    to_datetime,
+    to_stream_url
+)
 from .types import (
     DataStreamDict,
     ErrorMessageDict,
@@ -57,9 +61,7 @@ async def subscribe_trade(
     if not symbols:
         return
 
-    streams = [symbol + '@trade' for symbol in symbols]
-    query_string = f"streams={'/'.join(streams)}"
-    url = f"{BINANCE_WS_URL}/stream?{query_string}"
+    url = to_stream_url(symbols, "trade")
 
     try:
         async with websockets.connect(url) as ws:  # type: ignore

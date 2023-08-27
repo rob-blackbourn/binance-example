@@ -9,7 +9,7 @@ from typing import Any, AsyncIterator, Sequence, TypedDict, Union, cast
 from graphql import GraphQLResolveInfo
 import websockets
 
-from .common import BINANCE_WS_URL
+from .common import BINANCE_WS_URL, to_stream_url
 from .types import (
     DataStreamDict,
     ErrorMessageDict,
@@ -43,9 +43,7 @@ async def subscribe_book_ticker(
     if not symbols:
         return
 
-    streams = [symbol + '@bookTicker' for symbol in symbols]
-    query_string = f"streams={'/'.join(streams)}"
-    url = f"{BINANCE_WS_URL}/stream?{query_string}"
+    url = to_stream_url(symbols, 'bookTicker')
 
     try:
         async with websockets.connect(url) as ws:  # type: ignore
