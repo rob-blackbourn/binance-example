@@ -1,0 +1,13 @@
+{
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.rulers": [80]
+    },
+    "cSpell.words": [
+        "ASGI",
+        "bareasgi",
+        "httpx",
+        "pyutils",
+        "websockets"
+    ]
+}
