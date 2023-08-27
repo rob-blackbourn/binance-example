@@ -2,7 +2,6 @@
 
 from asyncio import CancelledError
 from datetime import datetime
-from decimal import Decimal
 import json
 import logging
 from typing import Any, AsyncIterator, Sequence, TypedDict, Union, cast
@@ -11,7 +10,12 @@ from graphql import GraphQLResolveInfo
 import websockets
 
 from .common import BINANCE_WS_URL
-from .types import DataStreamDict, ErrorMessageDict, StreamResponseDict
+from .types import (
+    DataStreamDict,
+    ErrorMessageDict,
+    StreamResponseDict,
+    Numeric
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -69,12 +73,12 @@ def resolve_book_ticker_subscription(
         obj: BookTickerEventDict,
         _info: GraphQLResolveInfo,
         symbols: Sequence[str]
-) -> dict[str, str | int | float | Decimal | datetime]:
+) -> dict[str, str | int | float | Numeric | datetime]:
     return {
         "updateId": obj['u'],
         "symbol": obj['s'],
-        "bidPrice": Decimal(obj['b']),
-        "bidQuantity": Decimal(obj['B']),
-        "askPrice": Decimal(obj['a']),
-        "askQuantity": Decimal(obj['A'])
+        "bidPrice": Numeric(obj['b']),
+        "bidQuantity": Numeric(obj['B']),
+        "askPrice": Numeric(obj['a']),
+        "askQuantity": Numeric(obj['A'])
     }

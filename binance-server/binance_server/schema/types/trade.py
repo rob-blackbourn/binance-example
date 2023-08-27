@@ -4,20 +4,20 @@ from graphql import (
     GraphQLObjectType,
     GraphQLField,
     GraphQLNonNull,
-    GraphQLString,
     GraphQLID,
     GraphQLBoolean
 )
 
 from .datetime import GraphQLDateTime
+from .numeric import GraphQLNumeric
 
 GraphQLTrade = GraphQLObjectType(
     name="Trade",
     fields=lambda: {
         "id": GraphQLField(GraphQLNonNull(GraphQLID)),
-        "price": GraphQLField(GraphQLNonNull(GraphQLString)),
-        "qty": GraphQLField(GraphQLNonNull(GraphQLString)),
-        "quoteQty": GraphQLField(GraphQLNonNull(GraphQLString)),
+        "price": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "qty": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "quoteQty": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
         "time": GraphQLField(GraphQLNonNull(GraphQLDateTime)),
         "isBuyerMaker": GraphQLField(GraphQLNonNull(GraphQLBoolean)),
         "isBestMatch": GraphQLField(GraphQLNonNull(GraphQLBoolean)),

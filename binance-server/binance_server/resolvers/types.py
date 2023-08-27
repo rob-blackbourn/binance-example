@@ -1,6 +1,7 @@
 """Types"""
 
-from typing import Any, Generic, TypedDict, TypeVar
+from decimal import Decimal
+from typing import Any, Generic, Literal, TypedDict, TypeVar
 
 TData = TypeVar('TData')
 
@@ -18,3 +19,26 @@ class ErrorMessageDict(TypedDict):
 class StreamResponseDict(TypedDict):
     result: Any
     id: int
+
+
+Numeric = Decimal
+# Numeric = str
+
+KLineInterval = Literal[
+    "1s",
+    "1m",
+    "3m",
+    "5m",
+    "15m",
+    "30m",
+    "1h",
+    "2h",
+    "4h",
+    "6h",
+    "8h",
+    "12h",
+    "1d",
+    "3d",
+    "1w",
+    "1M",
+]

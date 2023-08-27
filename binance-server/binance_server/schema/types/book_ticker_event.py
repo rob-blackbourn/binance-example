@@ -8,16 +8,16 @@ from graphql import (
     GraphQLID,
 )
 
-from .decimal import GraphQLDecimal
+from .numeric import GraphQLNumeric
 
 GraphQLBookTickerEvent = GraphQLObjectType(
     name="BookTickerEvent",
     fields=lambda: {
         "updateId": GraphQLField(GraphQLNonNull(GraphQLID)),
         "symbol": GraphQLField(GraphQLNonNull(GraphQLString)),
-        "bidPrice": GraphQLField(GraphQLNonNull(GraphQLDecimal)),
-        "bidQuantity": GraphQLField(GraphQLNonNull(GraphQLDecimal)),
-        "askPrice": GraphQLField(GraphQLNonNull(GraphQLDecimal)),
-        "askQuantity": GraphQLField(GraphQLNonNull(GraphQLDecimal))
+        "bidPrice": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "bidQuantity": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "askPrice": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "askQuantity": GraphQLField(GraphQLNonNull(GraphQLNumeric))
     }
 )

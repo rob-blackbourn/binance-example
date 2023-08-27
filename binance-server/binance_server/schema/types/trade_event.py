@@ -5,12 +5,12 @@ from graphql import (
     GraphQLField,
     GraphQLNonNull,
     GraphQLString,
-    GraphQLFloat,
     GraphQLID,
     GraphQLBoolean
 )
 
 from .datetime import GraphQLDateTime
+from .numeric import GraphQLNumeric
 
 GraphQLTradeEvent = GraphQLObjectType(
     name="TradeEvent",
@@ -18,8 +18,8 @@ GraphQLTradeEvent = GraphQLObjectType(
         "eventTime": GraphQLField(GraphQLNonNull(GraphQLDateTime)),
         "symbol": GraphQLField(GraphQLNonNull(GraphQLString)),
         "tradeId": GraphQLField(GraphQLNonNull(GraphQLID)),
-        "price": GraphQLField(GraphQLNonNull(GraphQLFloat)),
-        "quantity": GraphQLField(GraphQLNonNull(GraphQLFloat)),
+        "price": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
+        "quantity": GraphQLField(GraphQLNonNull(GraphQLNumeric)),
         "buyerOrderId": GraphQLField(GraphQLNonNull(GraphQLID)),
         "sellerOrderId": GraphQLField(GraphQLNonNull(GraphQLID)),
         "tradeTime": GraphQLField(GraphQLNonNull(GraphQLDateTime)),

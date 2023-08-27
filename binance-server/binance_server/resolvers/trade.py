@@ -19,7 +19,12 @@ import httpx
 import websockets
 
 from .common import BINANCE_WS_URL, BINANCE_HTtP_URL, to_datetime
-from .types import DataStreamDict, ErrorMessageDict, StreamResponseDict
+from .types import (
+    DataStreamDict,
+    ErrorMessageDict,
+    StreamResponseDict,
+    Numeric
+)
 
 LOGGER = logging.getLogger(__name__)
 
@@ -115,9 +120,9 @@ async def resolve_trades(
         return [
             {
                 "id": trade['id'],
-                "price": trade['price'],
-                "qty": trade['qty'],
-                "quoteQty": trade['quoteQty'],
+                "price": Numeric(trade['price']),
+                "qty": Numeric(trade['qty']),
+                "quoteQty": Numeric(trade['quoteQty']),
                 "time": to_datetime(trade['time']),
                 "isBuyerMaker": trade['isBuyerMaker'],
                 "isBestMatch": trade['isBestMatch']
@@ -146,9 +151,9 @@ async def resolve_historical_trades(
         return [
             {
                 "id": trade['id'],
-                "price": trade['price'],
-                "qty": trade['qty'],
-                "quoteQty": trade['quoteQty'],
+                "price": Numeric(trade['price']),
+                "qty": Numeric(trade['qty']),
+                "quoteQty": Numeric(trade['quoteQty']),
                 "time": to_datetime(trade['time']),
                 "isBuyerMaker": trade['isBuyerMaker'],
                 "isBestMatch": trade['isBestMatch']
