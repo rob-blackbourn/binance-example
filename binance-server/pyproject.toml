@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "binance-server"
+version = "0.1.0"
+description = "A web server for binance"
+authors = ["Rob Blackbourn <rob.blackbourn@gmail.com>"]
+license = "Apache-2.0"
+readme = "README.md"
+packages = [
+    { include = "binance_server" }
+]
+
+
+[tool.poetry.scripts]
+start-binance-server = "binance_server.entrypoints.start_server:main"
+
+[tool.poetry.dependencies]
+python = "3.11"
+websockets = "^11.0.3"
+bareasgi-graphql-next = "^5.0.4"
+jetblack-iso8601 = "^1.0.2"
+bareasgi-cors = "^4.1.0"
+httpx = "^0.24.1"
+hypercorn = "^0.14.4"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

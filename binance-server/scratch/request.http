@@ -1,0 +1,7 @@
+GET https://api.binance.com/api/v3/exchangeInfo
+Accept: application/json
+
+###
+
+GET https://api.binance.com/api/v3/trades?symbol=BTCUSDT&limit=100
+Accept: application/json
