@@ -4,26 +4,32 @@ This document shows the steps used to create the basic binance client.
 
 ## Step 1 - Create the React project.
 
-Use `create-react-app` to bootstrap the project. The flags specify
-using `npm` as the package manager (rather than `yarn`) and for Typescript
-rather than plain JavaScript.
+First we must create a react project. The most simple approach is to
+use [`create-react-app`](https://create-react-app.dev/).
 
-After creating the project, remove the git repo for create react app and
-make one for the project.
+The flags specify that we are using `npm` as the package manager (rather than `yarn`)
+and to use TypeScript rather than plain JavaScript.
+
+The `create-react-app` application essentially clones a project. We need
+to remove that git repository from that project and create a new one.
 
 ```bash
 $ npx create-react-app binance-client --use-npm --template typescript
-$ cd binance-client
-$ rm -rf .git
-$ git init
-$ git add .
-$ git commit -m 'Initial commit'
+binance-client $ cd binance-client
+binance-client $ rm -rf .git
+binance-client $ git init
+binance-client $ git add .
+binance-client $ git commit -m 'Initial commit'
 ```
 
 ## Step 2 - Tidy up the default project.
 
-No open the project in VS code.
+The scaffold creates a project with a bunch of code we don't want.
+This needs to be cleaned up.
 
+No open the project in [VS code](https://code.visualstudio.com/).
+
+To make the code formatting consistent we will use [prettier](https://prettier.io/).
 Ensure the "prettier" VS code extension is installed, then add the following to the
 `package.json`.
 
@@ -42,7 +48,7 @@ Ensure the "prettier" VS code extension is installed, then add the following to 
   ...
 ```
 
-Create the file `.vscode/settings.json` with the following content:
+In order to enable automatic formatting create the file `.vscode/settings.json` with the following content:
 
 ```json
 {
@@ -55,7 +61,7 @@ Create the file `.vscode/settings.json` with the following content:
 }
 ```
 
-Change `src/App.tsx` to:
+Now we can start tidying. Change `src/App.tsx` to:
 
 ```ts
 export default function App() {
@@ -67,9 +73,9 @@ export default function App() {
 }
 ```
 
-In `src/index.html` change `<title>React App</title>` to `<title>Binance Client</title>`.
+In `public/index.html` change `<title>React App</title>` to `<title>Binance Client</title>`.
 
-Now remove `src/App.css`, `App.test.tsx`, and `logo.svg`.
+Now remove the now unreferenced  `src/App.css`, `App.test.tsx`, and `logo.svg`.
 
 Change the `README.md` to:
 
@@ -87,6 +93,8 @@ $ git commit -m "Tidied up the react project"
 ```
 
 ## Step 3 - Setup material UI
+
+This project will use a [material-ui](http://mui.com) library.
 
 Open a terminal in VS code and add the following packages.
 
@@ -126,7 +134,7 @@ material font icons without going to the internet:
 ```
 
 Change the `src/index.tsx` to the following which will add the roboto
-and material icon fonts. It also removes the "strict" mode, which causes
+and material-icon fonts. It also removes the "strict" mode, which causes
 issues when subscribing to ticking data.
 
 ```ts
