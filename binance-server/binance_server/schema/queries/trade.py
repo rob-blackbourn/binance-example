@@ -1,4 +1,4 @@
-"""Null query"""
+"""Queries for trade"""
 
 from graphql import (
     GraphQLField,
